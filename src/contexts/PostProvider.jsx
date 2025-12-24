@@ -19,8 +19,14 @@ function PostProvider(props) {
         "React, Node.js, Express.js, MongoDB are good technologies for web development.",
     },
   ]);
+
+  function addPost(newPost) {
+    const lastId = posts[posts.length - 1].id;
+    setPosts((prev) => [...prev, { ...newPost, id: lastId + 1 }]);
+  }
+
   return (
-    <PostContext.Provider value={{ posts, setPosts }}>
+    <PostContext.Provider value={{ posts, setPosts, addPost }}>
       {props.children}
     </PostContext.Provider>
   );
