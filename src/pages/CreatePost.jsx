@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { PostContext } from "../contexts/PostContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
 function CreatePost() {
   const { addPost } = useContext(PostContext);
   const {

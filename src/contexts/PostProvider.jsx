@@ -25,8 +25,20 @@ function PostProvider(props) {
     setPosts((prev) => [...prev, { ...newPost, id: lastId + 1 }]);
   }
 
+  function findPostById(id) {
+    return posts.find((post) => post.id === id);
+  }
+
+  function updatePost(updatedPost) {
+    setPosts((prev) =>
+      prev.map((post) => (post.id === updatedPost.id ? updatedPost : post))
+    );
+  }
+
   return (
-    <PostContext.Provider value={{ posts, setPosts, addPost }}>
+    <PostContext.Provider
+      value={{ posts, setPosts, addPost, findPostById, updatePost }}
+    >
       {props.children}
     </PostContext.Provider>
   );
